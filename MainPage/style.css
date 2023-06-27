@@ -1,4 +1,39 @@
-p {
-    font-size: 64px;
-    color: aquamarine;
+* {
+    overflow-wrap: break-word;
+    overflow: hidden;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+header {
+    padding: 30px;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    font-size:100px;
+    font-weight: bolder;
+    color: white;
+}
+
+#Subtitle {
+    font-size: 30px;
+    color: white;
+    margin: 10px;
+}
+
+#WelcomeButton {
+    transform: translateY(35vh);
+    height: 220px;
+    width: 1200px;
+    background-color: rgb(26, 25, 25);
+}
+
+.center {
+    margin: auto;
+    width: 50%;
+    text-align: center;
+}
+
+#ButtonDiv {
+    height: 100vh;
+    width: 100vw;
+    background-color: #d2b48c;
 }
