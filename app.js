@@ -8,6 +8,7 @@ const port = 3000;
 const RequestMap = new Map();
 RequestMap.set('/', LoadMainPage)
 RequestMap.set('/style.css', LoadMainPageStyle)
+RequestMap.set('/MainPage.js', LoadMainPageJS)
 
 function LoadMainPage(req, res){
     res.writeHead(200, { 'Content-Type': 'text/html'})
@@ -24,6 +25,18 @@ function LoadMainPage(req, res){
 function LoadMainPageStyle(req, res){
     res.writeHead(200, { 'Content-Type': 'text/css'})
     fs.readFile('MainPage/style.css', function(error, data){
+        if(error){
+            error404(res)
+        } else {
+            res.write(data)
+        }
+        res.end()
+    })
+}
+
+function LoadMainPageJS(req, res){
+    res.writeHead(200, { 'Content-Type': 'text/javascript'})
+    fs.readFile('MainPage/MainPage.js', function(error, data){
         if(error){
             error404(res)
         } else {
