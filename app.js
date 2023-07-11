@@ -1,17 +1,17 @@
-const { error } = require('console')
 const express = require('express')
 const http = require('http');
-const { url } = require('inspector');
 const app = express()
 const port = 80;
 
 
 //RequestMap holds path/path pair 
 const RequestMap = new Map();
-RequestMap.set('/', 'MainPage/index.html')
-RequestMap.set('/style.css', 'MainPage/style.css')
-RequestMap.set('/MainPage.js', 'MainPage/MainPage.js')
+RequestMap.set('/', 'Welcome/index.html')
+RequestMap.set('/style.css', 'Welcome/style.css')
+RequestMap.set('/Welcome.js', 'Welcome/Welcome.js')
 RequestMap.set('/MainMenu.html', 'MainMenu/MainMenu.html')
+RequestMap.set('/MainMenu.css', 'MainMenu/MainMenu.css')
+RequestMap.set('/MainMenu.js', 'MainMenu/MainMenu.js')
 
 
 //Handle all HTML/CSS/JS GET requests
