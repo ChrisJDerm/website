@@ -3,7 +3,6 @@ const http = require('http');
 const app = express()
 const port = 80;
 
-
 //RequestMap holds path/path pair 
 const RequestMap = new Map();
 RequestMap.set('/', 'Welcome/index.html')
@@ -12,7 +11,6 @@ RequestMap.set('/Welcome.js', 'Welcome/Welcome.js')
 RequestMap.set('/MainMenu.html', 'MainMenu/MainMenu.html')
 RequestMap.set('/MainMenu.css', 'MainMenu/MainMenu.css')
 RequestMap.set('/MainMenu.js', 'MainMenu/MainMenu.js')
-
 
 //Handle all HTML/CSS/JS GET requests
 app.get(/(\/|\.html|\.css|\.js)/, (req, res) => {
