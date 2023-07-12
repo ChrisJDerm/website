@@ -1,13 +1,27 @@
-const request = new XMLHttpRequest();
-
 window.onload = init()
 
 function init(){
-    console.log(window.document.title)
-    window.document.getElementById("header").onclick = function LoadMainMenu(){
-        console.log("Requesting")
-        request.open('GET', '/MainMenu.html')
-        request.send()
+    makeGetRequest('/user', (res) => {
+        window.document.getElementById('username').innerText = res
+    })
+
+
+    window.document.getElementById("ReturnMenu").onclick = function LoadMainMenu(){
+        //console.log("Requesting")
+        makeGetRequest('/MainMenu.html', (res)=> {})
         window.location = "/MainMenu.html"
     }
+}
+
+function makeGetRequest(url, callback){
+
+    const request = new XMLHttpRequest()
+    request.onreadystatechange = () => {
+        if (request.readyState === 4) {
+            callback(request.response);
+        }
+    };
+
+    request.open('GET', url, true)
+    request.send()
 }
