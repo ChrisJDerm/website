@@ -20,6 +20,7 @@ RequestMap.set('/Welcome.js', 'Welcome/Welcome.js')
 RequestMap.set('/MainMenu.html', 'MainMenu/MainMenu.html')
 RequestMap.set('/MainMenu.css', 'MainMenu/MainMenu.css')
 RequestMap.set('/MainMenu.js', 'MainMenu/MainMenu.js')
+RequestMap.set('/client.js', 'client.js')
 
 //Hostmap holds Host/Username pair
 const Hostmap = new Map();
@@ -36,17 +37,17 @@ app.get(/(\/+$|\.html|\.css|\.js)/, (req, res) => {
     })
 })
 
-//Read and store username data
-app.post('/user', jsonParser, (req, res) => {
-    //console.log("Host: " + req.headers.host)
-    //console.log("Username: " + (req.body['name']))
-    Hostmap.set(req.headers.host, req.body['name'])
-    //console.log("Map check: " + Hostmap.get(req.headers.host))
-})
+// //Read and store username data
+// app.post('/user', jsonParser, (req, res) => {
+//     //console.log("Host: " + req.headers.host)
+//     //console.log("Username: " + (req.body['name']))
+//     Hostmap.set(req.headers.host, req.body['name'])
+//     //console.log("Map check: " + Hostmap.get(req.headers.host))
+// })
 
-app.get('/user', (req, res) => {
-    res.send(Hostmap.get(req.headers.host))
-})
+// app.get('/user', (req, res) => {
+//     res.send(Hostmap.get(req.headers.host))
+// })
 
 //Establish server on port
 app.listen(port, () => {

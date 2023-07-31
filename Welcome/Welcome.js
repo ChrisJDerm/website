@@ -13,10 +13,9 @@ function init(){
                 alert("Please enter a username") //implement record previous name
             } else {
                 console.log("Loging name: " + username)
-                request.open('GET', '/MainMenu.html')
-                request.send()
-                request.open('POST', '/user', true)
-                request.send(JSON.stringify(userJSON))
+                GlobalUser = username
+                // request.open('POST', '/user', true)
+                // request.send(JSON.stringify(userJSON))
                 window.location = '/MainMenu.html'
             }
         }
