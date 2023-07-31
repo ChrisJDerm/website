@@ -14,8 +14,6 @@ function init(){
             } else {
                 console.log("Loging name: " + username)
                 GlobalUser = username
-                // request.open('POST', '/user', true)
-                // request.send(JSON.stringify(userJSON))
                 window.location = '/MainMenu.html'
             }
         }

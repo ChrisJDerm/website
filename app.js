@@ -1,11 +1,14 @@
-const http = require('http');
-
-//Express
-const express = require('express')
-const app = express()
+//Includes
+const express = require("express");
+const app = express();
+const httpServer = require("http").createServer(app);
+const io = require("socket.io")(httpServer, {
+    path: '/'
+});
 
 //Parsers
-const bodyParser = require('body-parser')
+const bodyParser = require('body-parser');
+const { Socket } = require('socket.io');
 const jsonParser = bodyParser.json({type: String})
 const urlencodedParser = bodyParser.urlencoded({ extended: false})
 

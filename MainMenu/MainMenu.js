@@ -4,7 +4,6 @@ function init(){
     // makeGetRequest('/user', (res) => {
     //     window.document.getElementById('username').innerText = res
     // })
-    window.document.getElementById('username').innerText = GlobalUser
 
 
     window.document.getElementById("ReturnMenu").onclick = function LoadMainMenu(){
