@@ -4,6 +4,7 @@ function init(){
     // makeGetRequest('/user', (res) => {
     //     window.document.getElementById('username').innerText = res
     // })
+    window.document.getElementById('username').innerText = window.sessionStorage.getItem("User")
 
 
     window.document.getElementById("ReturnMenu").onclick = function LoadMainMenu(){

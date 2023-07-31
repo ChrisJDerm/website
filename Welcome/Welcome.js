@@ -13,7 +13,7 @@ function init(){
                 alert("Please enter a username") //implement record previous name
             } else {
                 console.log("Loging name: " + username)
-                GlobalUser = username
+                window.sessionStorage.setItem("User", username)
                 window.location = '/MainMenu.html'
             }
         }

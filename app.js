@@ -2,28 +2,20 @@
 const express = require("express");
 const app = express();
 const httpServer = require("http").createServer(app);
-const io = require("socket.io")(httpServer, {
-    path: '/'
-});
-
-//Parsers
-const bodyParser = require('body-parser');
-const { Socket } = require('socket.io');
-const jsonParser = bodyParser.json({type: String})
-const urlencodedParser = bodyParser.urlencoded({ extended: false})
+const io = require("socket.io")(httpServer);
 
 //Default port
 const port = 80;
 
 //RequestMap holds URL/Path pair 
 const RequestMap = new Map();
-RequestMap.set('/', 'Welcome/index.html')
-RequestMap.set('/style.css', 'Welcome/style.css')
-RequestMap.set('/Welcome.js', 'Welcome/Welcome.js')
-RequestMap.set('/MainMenu.html', 'MainMenu/MainMenu.html')
-RequestMap.set('/MainMenu.css', 'MainMenu/MainMenu.css')
-RequestMap.set('/MainMenu.js', 'MainMenu/MainMenu.js')
-RequestMap.set('/client.js', 'client.js')
+RequestMap.set('/', 'Welcome/index.html');
+RequestMap.set('/style.css', 'Welcome/style.css');
+RequestMap.set('/Welcome.js', 'Welcome/Welcome.js');
+RequestMap.set('/MainMenu.html', 'MainMenu/MainMenu.html');
+RequestMap.set('/MainMenu.css', 'MainMenu/MainMenu.css');
+RequestMap.set('/MainMenu.js', 'MainMenu/MainMenu.js');
+RequestMap.set('/client.js', 'client.js');
 
 //Hostmap holds Host/Username pair
 const Hostmap = new Map();
@@ -38,21 +30,13 @@ app.get(/(\/+$|\.html|\.css|\.js)/, (req, res) => {
             //console.log('Sent: ' + req.url) //maybe send js file with alert?
         }
     })
-})
+});
 
-// //Read and store username data
-// app.post('/user', jsonParser, (req, res) => {
-//     //console.log("Host: " + req.headers.host)
-//     //console.log("Username: " + (req.body['name']))
-//     Hostmap.set(req.headers.host, req.body['name'])
-//     //console.log("Map check: " + Hostmap.get(req.headers.host))
-// })
-
-// app.get('/user', (req, res) => {
-//     res.send(Hostmap.get(req.headers.host))
-// })
+io.on('connection', (socket) => {
+    console.log('socket')
+});
 
 //Establish server on port
 app.listen(port, () => {
     console.log('Listening on port ' + String(port))
-})
+});
