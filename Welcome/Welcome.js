@@ -10,7 +10,7 @@ function init(){
         console.log(JSON.stringify(userJSON))
         if(event.key === "Enter"){
             if(username === ""){
-                alert("Please enter a username") //implement record previous name
+                alert("Please enter a username")
             } else {
                 console.log("Loging name: " + username)
                 window.sessionStorage.setItem("User", username)

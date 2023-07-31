@@ -1,8 +1,10 @@
 //Includes
 const express = require("express");
 const app = express();
+const cors = require('cors');
 const httpServer = require("http").createServer(app);
 const io = require("socket.io")(httpServer);
+app.use(cors())
 
 //Default port
 const port = 80;
@@ -16,9 +18,9 @@ RequestMap.set('/MainMenu.html', 'MainMenu/MainMenu.html');
 RequestMap.set('/MainMenu.css', 'MainMenu/MainMenu.css');
 RequestMap.set('/MainMenu.js', 'MainMenu/MainMenu.js');
 RequestMap.set('/client.js', 'client.js');
-
-//Hostmap holds Host/Username pair
-const Hostmap = new Map();
+RequestMap.set('/ChatScreen.html', 'ChatScreen/ChatScreen.html')
+RequestMap.set('/ChatScreen.css', 'ChatScreen/ChatScreen.css')
+RequestMap.set('/ChatScreen.js', 'ChatScreen/ChatScreen.js')
 
 //Handle all HTML/CSS/JS GET requests
 app.get(/(\/+$|\.html|\.css|\.js)/, (req, res) => {
@@ -32,8 +34,8 @@ app.get(/(\/+$|\.html|\.css|\.js)/, (req, res) => {
     })
 });
 
-io.on('connection', (socket) => {
-    console.log('socket')
+io.on('connection', socket => {
+    console.log(socket.id)
 });
 
 //Establish server on port

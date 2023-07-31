@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+    <script type="/module" defer src="./ChatSocket.js"></script>
+    <script defer src="./ChatScreen.js"></script>
+    <link rel="stylesheet" href="./ChatScreen.css">
+</head>
+<body>
+    <div class="div-header flex-container" id="header">
+        <button id="ReturnMenu">
+            Sandwich
+        </button>
+        <div class=".flex-vertical-container" id="username-display-box">
+            <p class="username-display">User:</p>
+            <p class="username-display" id="username"></p>
+        </div>
+    </div>
+    <div class="flex-vertical-container">
+        <div id="chat"></div>
+        <input type="text" id="typing">^^^^^^^^^^^ Type here ^^^^^^^^^^^</input>
+    </div>
+</body>
+</html>

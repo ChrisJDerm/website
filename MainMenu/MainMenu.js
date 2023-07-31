@@ -1,16 +1,17 @@
 window.onload = init()
 
 function init(){
-    // makeGetRequest('/user', (res) => {
-    //     window.document.getElementById('username').innerText = res
-    // })
     window.document.getElementById('username').innerText = window.sessionStorage.getItem("User")
 
 
     window.document.getElementById("ReturnMenu").onclick = function LoadMainMenu(){
-        //console.log("Requesting")
         makeGetRequest('/MainMenu.html', (res)=> {})
         window.location = "/MainMenu.html"
+    }
+
+    window.document.getElementById('EnterChat').onclick = function LoadChat(){
+        makeGetRequest('/ChatScreen.html', (res) => {})
+        window.location = "/ChatScreen.html"
     }
 }
 
