@@ -78,7 +78,7 @@ body {
 
 #chat{
     width: 95vw;
-    height: 65vh;
+    height: 50vh;
     margin-top: 5vh;
     border: 5px solid  #1c1d1f;
     margin-left: 2.5%;
@@ -90,5 +90,11 @@ body {
     border: 5px solid  #1c1d1f;
     height: 10vh;
     text-align: center;
+    font-size: 3vw;
+}
+
+#chat{
+    justify-content: left;
+    text-align: left;
     font-size: 3vw;
 }

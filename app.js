@@ -44,8 +44,14 @@ app.get(/(\/+$|\.html|\.css|\.js)/, (req, res) => {
     })
 });
 
-io.on('connection', (socket) => {
-    console.log('a user connected');
+
+
+io.on('connection', (socket) => { //ON CONNECTION SEND ALL STORED MESSAGES
+    console.log("New connection: " + socket.id)
+    socket.on('message', (msg, user) => {
+        console.log(user + ": " + msg)
+        io.emit('message-update', msg, user)
+    })
 });
 
 //Establish server on port
