@@ -97,4 +97,8 @@ body {
     justify-content: left;
     text-align: left;
     font-size: 3vw;
+    list-style: none;
+    scroll-behavior: auto;
+    overflow: scroll;
+    padding: .5vw;
 }
