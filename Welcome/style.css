@@ -1,0 +1,60 @@
+* {
+    overflow: hidden;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+header {
+    padding: 30px;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    font-size:8vw;
+    font-weight: bolder;
+    color: white;
+}
+
+#Subtitle {
+    font-size: 1.5vw;
+    color: white;
+    margin: 10px;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 0px;
+}
+
+#Welcome {
+    height: auto;
+    width: 60vw;
+    background-color: rgb(26, 25, 25);
+    justify-content: center;
+    padding-top: 5%;
+    padding-bottom: 5%;
+}
+
+.center {
+    margin: auto;
+    text-align: center;
+    justify-content: center;
+}
+
+#ButtonDiv {
+    transform: translateY(30vh);
+    height: 70vw;
+    width: 100vw;
+    min-height: auto;
+    justify-content: center;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+    background-color: #c9dce7;
+    margin:0;
+    padding:0;
+}
+
+input {
+    width: 30%;
+    height: auto;
+    font-size: 1.7vw;
+    text-align: center;
+}

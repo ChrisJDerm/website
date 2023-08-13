@@ -1,61 +1,60 @@
-const { error } = require('console')
-const fs = require('fs')
+//Includes
+const { Console } = require('console');
+const express = require('express');
+const app = express();
 const http = require('http');
-const { url } = require('inspector');
-const port = 3000;
+const server = http.createServer(app);
+const { Server } = require("socket.io");
+const io = new Server(server);
 
-//RequestMap holds request keys to matching functions 
+
+//Default port
+const port = 80;
+
+//RequestMap holds URL/Path pair 
 const RequestMap = new Map();
-RequestMap.set('/', LoadMainPage)
-RequestMap.set('/style.css', LoadMainPageStyle)
+RequestMap.set('/', '/Welcome/index.html');
+RequestMap.set('/style.css', '/Welcome/style.css');
+RequestMap.set('/Welcome.js', '/Welcome/Welcome.js');
+RequestMap.set('/MainMenu.html', '/MainMenu/MainMenu.html');
+RequestMap.set('/MainMenu.css', '/MainMenu/MainStyle.css');
+RequestMap.set('/MainMenu.js', '/MainMenu/MainMenu.js');
+RequestMap.set('/client.js', '/client.js');
+RequestMap.set('/ChatScreen.html', '/ChatScreen/ChatScreen.html')
+RequestMap.set('/ChatScreen.css', '/ChatScreen/ChatScreen.css')
+RequestMap.set('/ChatScreen.js', '/ChatScreen/ChatScreen.js')
+RequestMap.set('/socket.io/socket.io.js', '/node_modules/socket.io/client-dist/socket.io.js')
 
-function LoadMainPage(req, res){
-    res.writeHead(200, { 'Content-Type': 'text/html'})
-    fs.readFile('MainPage/index.html', function(error, data){
-        if(error){
-            error404(res)
-        } else {
-            res.write(data)
-        }
-        res.end()
-    })
-}
-
-function LoadMainPageStyle(req, res){
-    res.writeHead(200, { 'Content-Type': 'text/css'})
-    fs.readFile('MainPage/style.css', function(error, data){
-        if(error){
-            error404(res)
-        } else {
-            res.write(data)
-        }
-        res.end()
-    })
-}
-
-const server = http.createServer(function(req, res){
-    var address = new URL(req.url, `http://${req.headers.host}`);
-    //console.log(address.pathname)
-    if(RequestMap.get(address.pathname) != undefined){
-        RequestMap.get(address.pathname)(req, res)
+//Handle all HTML/CSS/JS GET requests
+app.get(/(\/+$|\.html|\.css|\.js)/, (req, res) => {
+    //console.log('Request Received: ' + req.url)
+    var path
+    if(RequestMap.get(req.url) === undefined){
+        path = req.url
     } else {
-        if(error){
-            error404(res)
-        }
-        res.end()
+        path = RequestMap.get(req.url)
     }
+    console.log(path)
+    res.sendFile(__dirname + path, function(err){
+        if(err){
+            console.log(err)
+        } else {
+            //console.log('Sent: ' + req.url) //maybe send js file with alert?
+        }
+    })
 });
 
-//Print 404 error and send 404 header
-function error404(response){
-    response.writeHead(404)
-    response.write('Error: File Not Found')
-}
 
-server.listen(port, function(error){
-    if(error){
-        console.log('Something went wrong: ', error)
-    } else {
-        console.log('Server listening on port ' + port)
-    }
+
+io.on('connection', (socket) => { //ON CONNECTION SEND ALL STORED MESSAGES
+    console.log("New connection: " + socket.id)
+    socket.on('message', (msg, user) => {
+        console.log(user + ": " + msg)
+        io.emit('message-update', msg, user)
+    })
+});
+
+//Establish server on port
+server.listen(port, () => {
+    console.log('Listening on port ' + String(port))
 });
