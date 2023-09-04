@@ -5,12 +5,12 @@ function init(){
 
 
     window.document.getElementById("ReturnMenu").onclick = function LoadMainMenu(){
-        makeGetRequest('/MainMenu.html', (res)=> {})
+        //makeGetRequest('/MainMenu.html', (res)=> {})
         window.location = "/MainMenu.html"
     }
 
     window.document.getElementById('EnterChat').onclick = function LoadChat(){
-        makeGetRequest('/ChatScreen.html', (res) => {})
+        //makeGetRequest('/ChatScreen.html', (res) => {})
         window.location = "/ChatScreen.html"
     }
 }

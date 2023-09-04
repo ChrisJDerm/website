@@ -1,4 +1,5 @@
-var socket = io("http://192.168.1.100:80");
+var socket = io(self.location.host);
+
 
 window.onload = init()
 
